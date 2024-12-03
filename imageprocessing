@@ -1,4 +1,5 @@
-% lines 1 through 18 are sourced from MATLAB Documentation: "CalculateGradientMagnitudeandGradientDirectionExample"
+% lines 16 through 19 are sourced from MATLAB Documentation: "CalculateGradientMagnitudeandGradientDirectionExample"
+%platform is MATLAB R2024b, latest version as of December 1st, 2024.
 % clears console and variables -- recommended for matlab
 clc
 clear
