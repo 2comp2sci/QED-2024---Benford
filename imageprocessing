@@ -1,0 +1,49 @@
+% clears console and variables -- recommended for matlab
+clc
+clear
+oneleading = 0;
+twoleading = 0;
+threeleading = 0;
+fourleading = 0;
+fiveleading = 0;
+sixleading = 0;
+sevenleading = 0;
+eightleading = 0;
+nineleading = 0;
+%turns color image to greyscale (req. for gradient processing)
+RGB = imread("C:\Users\morgs\Downloads\ai images qed\landmark.jpg");
+I = rgb2gray(RGB);
+%calculates gradient mag, numeric matrix
+[Gmag,Gdir] = imgradient(I,"prewitt");
+% limitation is having to manually change # elements in for loop based on
+% size of matrix, modeled by px1*px2 (px = width/height of img)
+% though gemini generates consistently sized images of 2048x2048 (4194304)
+for i = 1:4194304
+    if((Gmag(i)>=1 && Gmag(i)<2) || (Gmag(i)>=10 && Gmag(i)<20) || (Gmag(i)>=100 && Gmag(i)<200))
+        oneleading = oneleading + 1;
+ %same for leading digit = 2
+    elseif((Gmag(i)>=2 && Gmag(i)<3) || (Gmag(i)>= 20 && Gmag(i)<30) || (Gmag(i)>=200 && Gmag(i)<300))
+        twoleading = twoleading + 1;
+    %same for leading digit = 3
+    elseif((Gmag(i)>= 3 && Gmag(i)<4) || (Gmag(i)>= 30 && Gmag(i)<40) || (Gmag(i)>=300 && Gmag(i)<400))
+        threeleading = threeleading + 1;
+    %and ld = 4
+    elseif((Gmag(i)>=4 && Gmag(i)<5) || (Gmag(i)>=40 && Gmag(i)<50) || (Gmag(i)>=400 && Gmag(i)<500))
+        fourleading = fourleading + 1;
+    %and ld = 5
+    elseif((Gmag(i)>=5 && Gmag(i)<6) || (Gmag(i)>=50 && Gmag(i)<60) || (Gmag(i)>=500 && Gmag(i)<600))
+        fiveleading = fiveleading + 1;
+    %and ld = 6
+    elseif((Gmag(i)>=6 && Gmag(i)<7) || (Gmag(i)>=60 && Gmag(i)<70) || (Gmag(i)>=600 && Gmag(i)<700))
+        sixleading = sixleading + 1;
+    %and ld = 7
+    elseif((Gmag(i)>=7 && Gmag(i)<8) || (Gmag(i)>=70 && Gmag(i)<80) || (Gmag(i)>=700 && Gmag(i)<800))
+        sevenleading = sevenleading + 1;
+    %and ld = 8
+    elseif((Gmag(i)>=8 && Gmag(i)<9) || (Gmag(i)>=80 && Gmag(i)<90) || (Gmag(i)>=800 && Gmag(i)<900))
+        eightleading = eightleading + 1;
+    %else is used bc number will always have ld 1-9. no #s < 0
+    else
+        nineleading = nineleading + 1;
+    end
+end
